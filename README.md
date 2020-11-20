@@ -33,8 +33,8 @@ Things you may want to cover:
 | encrypted_password | string | null: false               |
 | last_name          | string | null: false               |
 | first_name         | string | null: false               |
-| last_name_kana     | string | null: false               |
-| first_name_kana    | string | null: false               |
+| last_name(kana)    | string | null: false               |
+| first_name(kana)   | string | null: false               |
 | birthday           | date   | null: false               |
 
 ### Association
@@ -63,10 +63,10 @@ Things you may want to cover:
 
 ## purchase_records テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| item   | references | null: false, foreign_key: true |
-| user   | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| item | references | null: false                    |
+| user | references | null: false, foreign_key: true |
 
 ### Association
 
