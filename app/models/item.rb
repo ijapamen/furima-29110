@@ -24,7 +24,7 @@ class Item < ApplicationRecord
     end
 
     validates_inclusion_of :price, in:300..9999999
-    validates :user
+    
   end  
 
 end
