@@ -5,7 +5,6 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
     # https://qiita.com/taka_no_okapi/items/0aa1be3624b337fa5db9を参照
     @item.image = fixture_file_upload('app/assets/images/item-sample.png')
-
   end
 
   describe '商品登録' do
@@ -59,34 +58,33 @@ RSpec.describe Item, type: :model do
       it 'priceが空だと登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceの範囲が、¥300~¥9,999,999の間でないと登録できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceの範囲が、¥300~¥9,999,999の間でないと登録できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceに半角数字が含まれていなければ登録できない' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceに半角数字が含まれていなければ登録できない' do
         @item.price = 'a'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'userが紐付いていないと保存できないこと' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
-
     end
   end
 end

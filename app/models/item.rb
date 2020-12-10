@@ -8,7 +8,6 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :prefecture
   belongs_to :day
-  
 
   with_options presence: true do
     validates :image
@@ -23,8 +22,6 @@ class Item < ApplicationRecord
       validates :days_id
     end
 
-    validates_inclusion_of :price, in:300..9999999
-    
-  end  
-
+    validates_inclusion_of :price, in: 300..9_999_999
+  end
 end

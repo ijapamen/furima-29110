@@ -9,7 +9,6 @@ FactoryBot.define do
     delivery_fee_id { 1 }
     prefecture_id   { 1 }
     days_id         { 1 }
-    price           { "9999" }
-    
+    price           { '9999' }
   end
 end
