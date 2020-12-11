@@ -30,30 +30,30 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Details can't be blank")
       end
-      it 'category_idが空だと登録できない' do
-        @item.category_id = ''
+      it 'category_idの値が0だと登録できない' do
+        @item.category_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category must be other than 0")
       end
-      it 'condition_idが空だと登録できない' do
-        @item.condition_id = ''
+      it 'condition_idの値が0だと登録できない' do
+        @item.condition_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include("Condition must be other than 0")
       end
-      it 'delivery_fee_idが空だと登録できない' do
-        @item.delivery_fee_id = ''
+      it 'delivery_fee_idの値が0だと登録できない' do
+        @item.delivery_fee_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery fee must be other than 0")
       end
-      it 'prefecture_idが空だと登録できない' do
-        @item.prefecture_id = ''
+      it 'prefecture_idの値が0だと登録できない' do
+        @item.prefecture_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 0")
       end
-      it 'days_idが空だと登録できない' do
-        @item.days_id = ''
+      it 'days_idの値が0だと登録できない' do
+        @item.days_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days can't be blank")
+        expect(@item.errors.full_messages).to include("Days must be other than 0")
       end
       it 'priceが空だと登録できない' do
         @item.price = ''
