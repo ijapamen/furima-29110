@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :condition
   belongs_to :delivery_fee
   belongs_to :prefecture
-  belongs_to :day
+  belongs_to :days
 
   with_options presence: true do
     validates :image
