@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit]
   
+
   def index
     @items = Item.all.order('created_at DESC')
   end
@@ -10,9 +11,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.valid?
-      @item.save
+    item = Item.new(item_params)
+    if item.valid?
+      item.save
       redirect_to root_path
     else
       render :new
@@ -27,7 +28,7 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    if current_user.id == @item.user_id 
+    if current_user.id == item.user_id 
       if item.valid?
         item.update(item_params)
         redirect_to item_path
