@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit]
-
+  
   def index
     @items = Item.all.order('created_at DESC')
   end
@@ -27,8 +27,8 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    item.update(item_params)
     if item.valid?
+      item.update(item_params)
       redirect_to item_path
     else
       render :edit
