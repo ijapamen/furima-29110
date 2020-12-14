@@ -27,12 +27,19 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    if item.valid?
-      item.update(item_params)
-      redirect_to item_path
-    else
-      render :edit
+    if current_user.id == @item.user_id 
+      if item.valid?
+        item.update(item_params)
+        redirect_to item_path
+      else
+        render :edit
+      end
     end
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
   end
 
   private
