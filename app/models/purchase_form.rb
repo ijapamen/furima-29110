@@ -1,7 +1,7 @@
 class PurchaseForm
   include ActiveModel::Model
 
-  attr_accessor :item_id, :user_id, :postal_code, :prefecture, :city, :house_number, :building_name, :phone_number, :order_id
+  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number
   # ここにバリデーションの処理を書く
   with_options presence: true do
     validates :item_id
@@ -11,9 +11,8 @@ class PurchaseForm
     validates :city
     validates :house_number
     validates :phone_number, format: { with: /\A\d{11}\z/ }
-    validates :order_id
+    
   end
-  validates :building_name
 
   def save
     # 各テーブルにデータを保存する処理を書く
