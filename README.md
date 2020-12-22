@@ -40,7 +40,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :purchase_records
+- has_many :orders
 
 ## items テーブル
 
@@ -59,9 +59,9 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one :purchase_record
+- has_one :order
 
-## purchase_records テーブル
+## orders テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -81,11 +81,11 @@ Things you may want to cover:
 | postal_code     | string     | null: false                    |
 | prefecture_id   | integer    | null: false                    |
 | city            | string     | null: false                    |
-| address         | string     | null: false                    |
-| building        | string     |                                |
+| house_number    | string     | null: false                    |
+| building_name   | string     |                                |
 | phone_number    | string     | null: false                    |
-| purchase_record | references | null: false, foreign_key: true |
+| order           | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase_record
+- belongs_to :order
