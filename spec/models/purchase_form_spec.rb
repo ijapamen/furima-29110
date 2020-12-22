@@ -7,7 +7,7 @@ RSpec.describe PurchaseForm, type: :model do
 
   describe '「購入記録」と「住所(発送先)」の保存' do
     context '保存がうまくいくとき' do
-      it 'item_id, user_id, postal_code, prefecture_id, city, house_number, phone_numberが存在すれば保存できる' do
+      it 'item_id, user_id, postal_code, prefecture_id, city, house_number, phone_number, tokenが存在すれば保存できる' do
         expect(@purchase_form).to be_valid
       end
     end
@@ -52,6 +52,11 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.phone_number = '080123456789'
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'tokenが空だと保存できない' do
+        @purchase_form.token = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Token can't be blank")
       end
       
     end
