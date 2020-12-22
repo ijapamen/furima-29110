@@ -21,7 +21,7 @@ RSpec.describe PurchaseForm, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できない' do
         @purchase_form.postal_code = '1234567'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@purchase_form.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it 'prefecture_idを選択していないと保存できない' do
         @purchase_form.prefecture_id = '0'
@@ -46,19 +46,18 @@ RSpec.describe PurchaseForm, type: :model do
       it 'phone_numberが半角のハイフンを含むと保存できない' do
         @purchase_form.phone_number = '080-1234-5678'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが11桁以内でないと保存できない' do
         @purchase_form.phone_number = '080123456789'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid')
       end
       it 'tokenが空だと保存できない' do
         @purchase_form.token = nil
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Token can't be blank")
       end
-      
     end
-  end 
+  end
 end

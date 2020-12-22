@@ -4,12 +4,8 @@ class OrdersController < ApplicationController
 
   def index
     @purchase_form = PurchaseForm.new
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
-    if @item.order.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user_id
+    redirect_to root_path if @item.order.present?
   end
 
   def create
@@ -34,12 +30,11 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_params[:token],
       currency: 'jpy'
     )
   end
-
 end
