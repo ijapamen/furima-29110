@@ -10,9 +10,22 @@ RSpec.describe PurchaseForm, type: :model do
       it 'item_id, user_id, postal_code, prefecture_id, city, house_number, phone_number, tokenが存在すれば保存できる' do
         expect(@purchase_form).to be_valid
       end
+      it 'building_nameが存在しなくても保存できる' do
+        expect(@purchase_form).to be_valid
+      end
     end
 
     context '保存がうまくいかないとき' do
+      it 'item_idが空だと保存できない' do
+        @purchase_form.item_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'user_idが空だと保存できない' do
+        @purchase_form.user_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("User can't be blank")
+      end
       it 'postal_codeが空だと保存できない' do
         @purchase_form.postal_code = nil
         @purchase_form.valid?
