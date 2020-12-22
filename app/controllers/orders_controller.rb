@@ -4,8 +4,10 @@ class OrdersController < ApplicationController
 
   def index
     @purchase_form = PurchaseForm.new
-    redirect_to root_path if current_user.id == @item.user_id
-    redirect_to root_path if @item.order.present?
+    if current_user.id == @item.user_id
+      root_path
+    if @item.order.present?
+      root_path
   end
 
   def create
@@ -37,4 +39,9 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def root_path
+    redirect_to root_path 
+  end
+  
 end
